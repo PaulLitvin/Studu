@@ -19,11 +19,27 @@ console.log(str);
 // 3) Вырезать из строки слово "легким" и вывести результат на экран
 let subst = str.indexOf("легким");
 subst = str.slice(subst).split("");
+let st = subst;
+st.splice(-2, 2 , "o");
 
-for (let i = 0; i < 2; i++) {
-	subst[subst.length - 1 - i] = "o";
-}
-document.write(subst.join(''));
+let str1 = str;
+var re = /легким/gi;
+ str1 = str1.replace(re, st.join(''));
+console.log(str1);
+
+
+document.body.onload = addElement;
+  var myDiv  = null;
+  function addElement() {
+    var newDiv = document.createElement("div");
+        newDiv.innerHTML = subst.join('');
+    document.body.insertBefore(newDiv, myDiv);
+  }
+
+
+
+
+
 
 // 4) Вывести в консоль квадратный корень из суммы кубов его элементов 
 let arr = [20, 33, 1, "Человек", 2, 3];
@@ -50,7 +66,7 @@ function takeArgument(str) {
 	//*убирает все пробелы в начале и в конце
 	str = str.trim();
 	str = str.split("");
-	//*выводит первые 50 символов, остальное заменяется на "..."	
+	//*выводит первые 50 символов, остальноезаменяется "..."	
 	if (str.length > 50) {
 		str = str.slice(0, 50);
 		console.log(str.join("") + "...");
