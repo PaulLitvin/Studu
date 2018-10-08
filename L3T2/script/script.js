@@ -36,11 +36,6 @@ document.body.onload = addElement;
     document.body.insertBefore(newDiv, myDiv);
   }
 
-
-
-
-
-
 // 4) Вывести в консоль квадратный корень из суммы кубов его элементов 
 let arr = [20, 33, 1, "Человек", 2, 3];
 //* Отсортировать числа
