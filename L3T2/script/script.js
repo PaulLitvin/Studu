@@ -6,7 +6,7 @@ str = str.split("");
 str[0] = str[0].toUpperCase();
 
 // 2) Заместить все  "-" на пробелы, результат выведеться в консоль
-str = str.map(function (value) {
+str = str.map( value => {
 	if (value == "-") {
 		value = " ";
 	}
@@ -28,20 +28,17 @@ document.write(subst.join(''));
 // 4) Вывести в консоль квадратный корень из суммы кубов его элементов 
 let arr = [20, 33, 1, "Человек", 2, 3];
 //* Отсортировать числа
-arr = arr.filter(function (value) {
+arr = arr.filter(value => {
 	if (typeof (value) == "number") {
 		return value;
 	}
 });
 //* Все значения массива в куб
-arr = arr.map(function (value) {
-	value = Math.pow(value, 3);
-	return value;
-});
+arr = arr.map(value => value = Math.pow(value, 3));
+
 //*Сумма значений массива
-arr = arr.reduce(function (total, value) {
-	return total + value;
-});
+arr = arr.reduce( (total, value) => total + value);
+
 //*Вывести в консоль корень квадратный из полученного результата
 console.log(Math.sqrt(arr));
 
@@ -53,7 +50,7 @@ function takeArgument(str) {
 	//*убирает все пробелы в начале и в конце
 	str = str.trim();
 	str = str.split("");
-	//*выводит первые 50 символов, остальноезаменяется "..."	
+	//*выводит первые 50 символов, остальное заменяется на "..."	
 	if (str.length > 50) {
 		str = str.slice(0, 50);
 		console.log(str.join("") + "...");
