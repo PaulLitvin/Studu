@@ -24,7 +24,7 @@ function chooseExpenses() {
 	for (let i = 0; i < 2; i++) {
 		let expens = prompt("Введите обязательную статью расходов в этом месяце", ""),
 			howMuch = prompt("Во сколько обойдется?", "");
-		if ((typeof (expens)) == 'string' && (typeof (expens)) != null && (typeof (howMuch)) != null &&
+		if ((typeof (expens)) == 'string' && expens != null && (typeof (howMuch)) != null &&
 			expens != '' && howMuch != '' && expens.length < 50) {
 			appData.expenses[expens] = howMuch;
 		} else {
@@ -66,10 +66,16 @@ checkSavings();
 
 function chooseOptExpenses() {
 	for (let i = 1; i <= 3; i++) {
-		appData.optionalExpenses[i] = prompt("Статья необязательных расходов?", "");
+		let optExpens = appData.optionalExpenses[i] = prompt("Статья необязательных расходов?", "");
+		if (typeof(optExpens) == 'string' && optExpens != null && 
+		optExpens != '' && optExpens.length < 50) {
+				appData.optionalExpenses[i] = optExpens;
+		} else {
+			i--;
+		}
 	}
 }
-
+chooseOptExpenses();
 /*
 //Цикл while
 let i  = 0;
