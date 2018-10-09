@@ -24,7 +24,7 @@ function chooseExpenses() {
 	for (let i = 0; i < 2; i++) {
 		let expens = prompt("Введите обязательную статью расходов в этом месяце", ""),
 			howMuch = prompt("Во сколько обойдется?", "");
-		if ((typeof (expens)) == 'string' && expens != null && (typeof (howMuch)) != null &&
+		if ((typeof (expens)) == 'string' && expens != null && howMuch != null &&
 			expens != '' && howMuch != '' && expens.length < 50) {
 			appData.expenses[expens] = howMuch;
 		} else {
@@ -82,7 +82,7 @@ let i  = 0;
 while ( i<2 ) {
 	let expens = prompt("Введите обязательную статью расходов в этом месяце", "");
 	 	howMuch = prompt("Во сколько обойдется?", "");
-	 if((typeof(expens)) == 'string' && (typeof(expens)) != null && (typeof(howMuch)) != null
+	 if((typeof(expens)) == 'string' && (typeof(expens)) != null && howMuch != null
 	 	&& expens != '' && howMuch != '' && expens.length < 50){
 	 	appData.expenses[expens] = howMuch;
 	 console.log('done')
@@ -99,7 +99,7 @@ let i = 0;
 do{
 	let expens = prompt("Введите обязательную статью расходов в этом месяце", "");
 	 	howMuch = prompt("Во сколько обойдется?", "");
-	 if((typeof(expens)) == 'string' && (typeof(expens)) != null && (typeof(howMuch)) != null
+	 if((typeof(expens)) == 'string' && (typeof(expens)) != null && howMuch != null
 	 	&& expens != '' && howMuch != '' && expens.length < 50){
 	 	appData.expenses[expens] = howMuch;
 	 console.log('done')
