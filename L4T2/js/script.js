@@ -1,5 +1,6 @@
 "use strict";
-
+// решение грубовато, зато свое))
+// жду критики
 function getFriendlyNumbers(start, end) {
 	
 	if (typeof (start) != "number" || typeof (end) != "number" ||
