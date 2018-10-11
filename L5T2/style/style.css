@@ -44,6 +44,7 @@ input{
 	width: 289px;
 
 }
+
 button{
 	background-color: #6F79FF;
 	border: none;
@@ -54,8 +55,6 @@ button{
 	font-size: 20px;
 	color: #fff;
 }
-
-
 
 .calculate-btn{
 	text-align: center;
