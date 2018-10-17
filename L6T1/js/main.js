@@ -20,8 +20,7 @@ let startBtn = document.getElementById('start'),
 	monthValue = document.querySelector('.month-value'),
 	dayValue = document.querySelector('.day-value');
 
-let money,
-	time;
+let money, time;
 
 optionalExpensesBtn.setAttribute('disabled', 'disabled');
 countBtn.setAttribute('disabled', 'disabled');
@@ -64,7 +63,6 @@ expensesBtn.addEventListener('click', function () {
 
 	}
 	expensesValue.textContent = sum;
-
 });
 
 optionalExpensesBtn.addEventListener('click', function () {
@@ -78,8 +76,6 @@ optionalExpensesBtn.addEventListener('click', function () {
 		appData.optionalExpenses[i] = optExpens;
 		optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' ';
 	}
-
-
 });
 
 countBtn.addEventListener('click', function () {
