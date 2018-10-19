@@ -30,7 +30,6 @@ expensesBtn.setAttribute('disabled', 'disabled');
 
 startBtn.addEventListener('click', function (event) {
 	event.preventDefault();
-
 	optionalExpensesBtn.removeAttribute('disabled', 'disabled');
 	countBtn.removeAttribute('disabled', 'disabled');
 	
@@ -51,11 +50,11 @@ startBtn.addEventListener('click', function (event) {
 
 	optionalExpensesItem.forEach(function (element, i, arr) {
 		element.addEventListener('input', function () {
+			console.log('hello');
 			let ar = [];
 			let ru = /[А-Яа-я]/gi;
 			let str = element.value.match(ru);
 			if (str != null) {
-	
 				for (let j = 0; j < arr.length; j++) {
 					if (arr[j].value == '') {
 						ar.push(arr[j].value);
@@ -106,12 +105,13 @@ optionalExpensesBtn.addEventListener('click', function () {
 });
 
 countBtn.addEventListener('click', function () {
+	let budg = appData.budget;
 	if (expensesValue.textContent != '') {
-		appData.budget -= +expensesValue.textContent;
+		budg -= +expensesValue.textContent;
 		countBtn.setAttribute('disabled', 'disabled');
 	}
 	if (appData.budget != undefined) {
-		appData.moneyPerDay = (appData.budget / 30).toFixed();
+		appData.moneyPerDay = (budg / 30).toFixed();
 		dayBudgetValue.textContent = appData.moneyPerDay;
 
 		if (appData.moneyPerDay < 100) {
@@ -189,6 +189,10 @@ expensesItem.forEach(function (element, i, arr) {
 		}
 		if (ar.length == 0) {
 			expensesBtn.removeAttribute('disabled', 'disabled');
+			countBtn.removeAttribute('disabled', 'disabled');
+		}else {
+			expensesBtn.setAttribute('disabled', 'disabled');
+			countBtn.setAttribute('disabled', 'disabled');
 		}
 	});
 });
