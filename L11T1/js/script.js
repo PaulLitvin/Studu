@@ -163,7 +163,6 @@ window.addEventListener('DOMContentLoaded', function () {
             } else {
                 statusMessage.innerHTML = message.failure;
             }
-
         });
 
         for (let i = 0; i < input.length; i++) {
@@ -187,10 +186,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
+            });
         });
-    });
 
-    contactForm.addEventListener('submit', function (event) {
+        contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
         let request = new XMLHttpRequest();
@@ -217,8 +216,8 @@ window.addEventListener('DOMContentLoaded', function () {
             }
 
         });
-        for (let i = 0; i < input.length; i++) {
-            input[i].value = '';
+        for (let i = 0; i < inputContactForm.length; i++) {
+            inputContactForm[i].value = '';
         }
     });
 
