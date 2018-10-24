@@ -120,105 +120,59 @@ window.addEventListener('DOMContentLoaded', function () {
         failure: 'Что-то пошло не так...'
     };
 
-    let form = document.querySelector('.main-form'),
-        input = form.querySelectorAll('input'),
+    let form = document.querySelectorAll('form'),
+        input = document.querySelectorAll('input'),
         statusMessage = document.createElement('div');
-    //Валидация формы модального окна
+
+    //Валидация формы
     input.forEach((element) => {
         let regExp = new RegExp();
         regExp = /[+0-9]/gi;
         element.addEventListener('input', function (event) {
-            if (event.data.match(regExp) == undefined) {
-                element.value = '';
+            if (element.name == "phone") {
+                if (event.data.match(regExp) == undefined) {
+                    element.value = '';
+                }
             }
         });
     });
 
     statusMessage.classList.add('status');
 
-    form.addEventListener('submit', function (event) {
+    form.forEach((element) => {
 
-        event.preventDefault();
-        form.appendChild(statusMessage);
+        element.addEventListener('submit', function (event) {
 
-        let request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+            event.preventDefault();
+            element.appendChild(statusMessage);
 
-        let formData = new FormData(form);
+            let request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
-        let obj = {};
-        formData.forEach(function (value, key) {
-            obj[key] = value;
-        });
-        let json = JSON.stringify(obj);
+            let formData = new FormData(element);
 
-        request.send(json);
-
-        request.addEventListener('readystatechange', function () {
-            if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-            } else if (request.readyState === 4 && request.status == 200) {
-                statusMessage.innerHTML = message.success;
-            } else {
-                statusMessage.innerHTML = message.failure;
-            }
-        });
-
-        for (let i = 0; i < input.length; i++) {
-            input[i].value = '';
-        }
-    });
-
-    let contactForm = document.querySelector('#form'),
-        inputContactForm = contactForm.querySelectorAll('input');
-
-
-    //Валидация контактной формы
-    inputContactForm.forEach((element) => {
-        let regExp = new RegExp();
-        regExp = /[+0-9]/gi;
-        element.addEventListener('input', function (event) {
-
-            if (element.name == "phone") {
-                if (event.data.match(regExp) == undefined) {
-                    element.value = '';
-                }
-            }
-
+            let obj = {};
+            formData.forEach(function (value, key) {
+                obj[key] = value;
             });
-        });
+            let json = JSON.stringify(obj);
 
-        contactForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+            request.send(json);
 
-        let request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+            request.addEventListener('readystatechange', function () {
+                if (request.readyState < 4) {
+                    statusMessage.innerHTML = message.loading;
+                } else if (request.readyState === 4 && request.status == 200) {
+                    statusMessage.innerHTML = message.success;
+                } else {
+                    statusMessage.innerHTML = message.failure;
+                }
+            });
 
-        let formData = new FormData(contactForm);
-
-        let obj = {};
-        formData.forEach(function (value, key) {
-            obj[key] = value;
-        });
-        let json = JSON.stringify(obj);
-
-        request.send(json);
-
-        request.addEventListener('readystatechange', function () {
-            if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-            } else if (request.readyState === 4 && request.status == 200) {
-                statusMessage.innerHTML = message.success;
-            } else {
-                statusMessage.innerHTML = message.failure;
+            for (let i = 0; i < input.length; i++) {
+                input[i].value = '';
             }
-
         });
-        for (let i = 0; i < inputContactForm.length; i++) {
-            inputContactForm[i].value = '';
-        }
     });
-
 });
